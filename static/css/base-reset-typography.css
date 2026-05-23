@@ -1,0 +1,108 @@
+/* ============================================
+   WinMaster — Reset & Typography
+   Modern sans-serif only
+   ============================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ---- Selection ---- */
+::selection {
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--text);
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+  transition: background .2s;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+::-webkit-scrollbar-corner { background: transparent; }
+
+/* ---- Typography ---- */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; }
+h2 { font-size: 1.6rem; font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+h4 { font-size: 1rem; font-weight: 600; }
+
+p, li, label, input, select, textarea, button {
+  font-family: var(--font-sans);
+}
+
+/* Form input consistency */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="time"],
+input[type="url"],
+input[type="email"],
+textarea {
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: .88rem;
+  outline: none;
+  background: var(--card);
+  color: var(--text);
+  transition: border-color .2s, box-shadow .2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+input:focus, textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+}
+
+code, pre, .mono, .dash-val, .dash-val-sm, .stat-large,
+.timer-display, .home-time, .load-row-pct {
+  font-family: var(--font-mono);
+}
+
+a {
+  color: var(--accent-light);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ---- Helpers ---- */
+.mt-8  { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mb-16 { margin-bottom: 16px; }
+.text-center { text-align: center; }
+.text-muted { color: var(--text-secondary); }
+.text-accent { color: var(--accent-light); }

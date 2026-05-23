@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C c:/Users/leeha/WinOperation log --oneline -10)",
+      "Bash(mkdir -p c:/Users/leeha/WinOperation/docs/superpowers/specs)",
+      "Bash(git -C c:/Users/leeha/WinOperation add docs/superpowers/specs/2026-05-23-psutil-pywin32-migration-design.md)",
+      "Bash(git -C c:/Users/leeha/WinOperation commit -m ' *)",
+      "Bash(git -C c:/Users/leeha/WinOperation add docs/superpowers/plans/2026-05-23-psutil-pywin32-migration.md)",
+      "Bash(git -C c:/Users/leeha/WinOperation commit -m 'docs: add psutil+pywin32 migration implementation plan')"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\leeha\\WinOperation\\docs\\superpowers"
+    ]
+  }
+}

@@ -1,0 +1,296 @@
+/* ============================================
+   WinMaster — Top Navigation Layout
+   Clean horizontal nav bar + single column content
+   ============================================ */
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg);
+}
+
+/* ---- Top Navigation Bar ---- */
+.topnav {
+  display: flex;
+  align-items: center;
+  height: var(--nav-h);
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 8px;
+}
+
+/* Brand / Logo */
+.topnav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-right: 16px;
+}
+
+.topnav-brand-icon {
+  font-size: 1.2rem;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+}
+
+.topnav-brand h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+  letter-spacing: -0.02em;
+  font-family: var(--font-sans);
+}
+
+/* Navigation Items */
+.topnav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+  scrollbar-width: none;
+}
+
+.topnav-list::-webkit-scrollbar {
+  display: none;
+}
+
+.topnav-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  height: var(--nav-h);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--nav-text);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.topnav-item:hover {
+  color: var(--text);
+  background: var(--nav-hover-bg);
+}
+
+.topnav-item.active {
+  color: var(--nav-active);
+  border-bottom-color: var(--nav-active-border);
+  font-weight: 600;
+}
+
+.topnav-item .topnav-icon {
+  font-size: 0.85rem;
+  width: 16px;
+  text-align: center;
+  opacity: 0.5;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topnav-item:hover .topnav-icon {
+  opacity: 0.7;
+}
+
+.topnav-item.active .topnav-icon {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* ---- Dropdown Arrow ---- */
+.dropdown-arrow {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  opacity: 0.5;
+  margin-left: 2px;
+}
+
+.topnav-item.dropdown-open .dropdown-arrow {
+  transform: rotate(180deg);
+  opacity: 0.8;
+}
+
+/* ---- Dropdown Menu ---- */
+.topnav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(15, 43, 74, 0.12);
+  padding: 6px;
+  display: none;
+  z-index: 200;
+}
+
+.topnav-dropdown.open {
+  display: block;
+  animation: dropdownFadeIn 0.15s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.topnav-dropdown-item {
+  display: block;
+  padding: 7px 14px;
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+}
+
+.topnav-dropdown-item:hover {
+  background: var(--accent-subtle);
+  color: var(--text);
+}
+
+.topnav-dropdown-item.active {
+  color: var(--accent-light);
+  font-weight: 600;
+  background: var(--accent-subtle);
+}
+
+.topnav-item.has-dropdown {
+  position: relative;
+}
+
+/* Exit button in topnav */
+.topnav-exit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--btn-border);
+  border-radius: var(--radius);
+  background: transparent;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  flex-shrink: 0;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.topnav-exit:hover {
+  color: var(--deep-red);
+  border-color: var(--deep-red);
+  background: rgba(220, 38, 38, 0.04);
+}
+
+.topnav-exit:active {
+  transform: scale(0.97);
+}
+
+/* ---- Main Content Area ---- */
+.main-content {
+  padding: 32px 40px 60px;
+  overflow-y: auto;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* ---- Section Heading (clean) ---- */
+.section-head {
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-head h2 {
+  font-family: var(--font-sans);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+/* ---- Exit Modal (kept from sidebar layout) ---- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--modal-overlay);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  background: var(--modal-bg);
+  border: 1px solid var(--modal-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px 24px;
+  max-width: 320px;
+  width: 90%;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-text {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 28px;
+  color: var(--text);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.modal-actions .btn {
+  min-width: 90px;
+}

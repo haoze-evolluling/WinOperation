@@ -1,0 +1,8 @@
+/* ============================================
+   WinMaster — Power Options Tab
+   ============================================ */
+#tab-power .card select { max-width: 400px; }
+#power-scheme-select:disabled {
+  opacity: .5; cursor: not-allowed;
+  color: var(--text-muted); border-color: var(--border);
+}

@@ -1,0 +1,87 @@
+/* ============================================
+   WinMaster — Responsive Breakpoints
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .main-content { padding: 28px 32px 48px; }
+}
+
+@media (max-width: 1024px) {
+  .main-content { padding: 24px 24px 40px; }
+  .section-head h2 { font-size: 1.4rem; }
+  .topnav { padding: 0 16px; }
+  .topnav-item { padding: 0 10px; font-size: .78rem; }
+}
+
+@media (max-width: 768px) {
+  .dashboard { flex-direction: column; }
+
+  .topnav {
+    padding: 0 12px;
+    gap: 4px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .topnav-brand { margin-right: 8px; }
+  .topnav-brand h2 { font-size: .9rem; }
+  .topnav-brand-icon { font-size: 1rem; }
+
+  .topnav-list {
+    gap: 0;
+    flex: 1;
+  }
+
+  .topnav-item {
+    padding: 0 8px;
+    font-size: .75rem;
+    gap: 4px;
+  }
+
+  .topnav-item .topnav-icon { display: none; }
+
+  .topnav-exit {
+    padding: 4px 8px;
+    font-size: .7rem;
+  }
+
+  .topnav-item .dropdown-arrow { display: none; }
+  .topnav-dropdown { min-width: 140px; }
+  .topnav-dropdown-item { padding: 10px 14px; font-size: .8rem; }
+
+  .main-content { padding: 20px 16px 40px; }
+
+  .section-head { margin-bottom: 20px; padding-bottom: 10px; }
+  .section-head h2 { font-size: 1.2rem; }
+
+  .card { padding: 20px; }
+  .stat-large { font-size: 1.3rem; }
+  .timer-display { font-size: 2.2rem; padding: 14px; }
+
+  .quick-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .quick-item { height: 44px; font-size: .8rem; padding: 0 12px; }
+
+  .btn { padding: 0 16px; font-size: .8rem; --btn-h: 38px; }
+  .btn-sm { padding: 0 10px; font-size: .73rem; --btn-sm-h: 32px; }
+
+  .btn-row { gap: 8px; }
+
+  .toast-container { top: 12px; right: 12px; left: 12px; }
+  .toast { max-width: 100%; }
+
+  .version-btn { height: 36px; font-size: .72rem; }
+
+  .dash-col-3 { grid-template-columns: 1fr 1fr; }
+  .dash-col-2 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .main-content { padding: 14px 12px 32px; }
+  .card { padding: 16px; }
+  .section-head { margin-bottom: 16px; }
+  .section-head h2 { font-size: 1.05rem; }
+  .quick-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .quick-item { height: 40px; font-size: .76rem; padding: 0 10px; }
+  .btn { padding: 0 14px; --btn-h: 36px; }
+  .btn-sm { padding: 0 8px; --btn-sm-h: 30px; }
+}

@@ -1,0 +1,121 @@
+/* ============================================
+   WinMaster -- Network & DNS Tab
+   ============================================ */
+
+.dns-protocol-toggle {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap;
+}
+.dns-protocol-toggle .protocol-label {
+  font-size: .82rem; color: var(--text-secondary); font-weight: 500; margin-right: 2px;
+}
+.dns-protocol-toggle .protocol-option {
+  display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: .85rem;
+  color: var(--text-secondary); padding: 6px 16px;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  transition: all .2s; user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.dns-protocol-toggle .protocol-option:hover { border-color: var(--text-muted); background: var(--hover-bg); }
+.dns-protocol-toggle .protocol-option.active { border-color: var(--accent); color: var(--accent); background: rgba(6, 182, 212, 0.08); }
+
+
+.dns-group { margin-bottom: 16px; }
+.dns-group:last-of-type { margin-bottom: 18px; }
+.dns-group-title {
+  font-size: .73rem; font-weight: 600; color: var(--text-muted);
+  margin-bottom: 10px;
+  text-transform: uppercase; letter-spacing: .06em;
+}
+
+.dns-presets { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* DNS tag buttons -- compact chips */
+.dns-tag {
+  display: inline-flex; align-items: center;
+  padding: 5px 14px;
+  font-size: .78rem; font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: all .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.dns-tag:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(6, 182, 212, 0.06);
+}
+.dns-tag:active { transform: scale(0.96); }
+
+.dns-input-group {
+  width: 100%;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.dns-input-group .dns-fields {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.dns-input-group .dns-fields input {
+  height: 42px; padding: 0 14px;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  font-size: .88rem; outline: none; flex: 1; min-width: 130px;
+  background: var(--card);
+  color: var(--text);
+  font-family: var(--font-sans);
+  transition: border-color .2s, box-shadow .2s;
+}
+.dns-input-group .dns-fields input:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--focus-ring); }
+.dns-input-group .dns-actions {
+  display: flex; gap: 8px; justify-content: flex-end;
+  margin-top: 12px;
+}
+
+/* Single-row variant for custom test (used by speedtest) */
+.dns-input-group.single-row {
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.dns-input-group.single-row > input {
+  flex: 1; height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  font-size: .88rem; outline: none;
+  background: var(--card); color: var(--text);
+  font-family: var(--font-sans);
+  transition: border-color .2s, box-shadow .2s;
+}
+.dns-input-group.single-row > input:focus {
+  border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--focus-ring);
+}
+.dns-input-group.single-row .dns-actions {
+  margin-top: 0; flex-shrink: 0; align-items: flex-start;
+}
+.dns-input-group.single-row .dns-actions .btn {
+  height: 42px;
+}
+
+#wifi-section { display: none; }
+.empty-hint { color: var(--text-muted); text-align: center; padding: 12px; font-size: .82rem; }
+
+/* Net info panel */
+.net-info-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: 12px;
+}
+
+/* Adapter loading progress bar */
+.adapter-loading-bar {
+  height: 3px; margin: -6px 0 12px; border-radius: 4px;
+  background: var(--track-bg); overflow: hidden;
+  display: none;
+}
+.adapter-loading-fill {
+  height: 100%; border-radius: 4px;
+  background: var(--gradient-accent); width: 0%;
+  transition: width 0.4s ease;
+}

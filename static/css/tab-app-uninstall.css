@@ -1,0 +1,26 @@
+/* ============================================
+   WinMaster — App Uninstall Tab
+   ============================================ */
+#app-uninstall-grid { display: block; }
+
+.quick-category-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.quick-item.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.quick-item.loading::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--text-muted);
+  border-top-color: var(--accent-light);
+  border-radius: 50%;
+  margin-left: auto;
+  flex-shrink: 0;
+}
