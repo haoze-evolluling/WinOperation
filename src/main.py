@@ -27,7 +27,6 @@ from services.system_info import (
     get_boot_time_str,
     get_uptime_str,
     get_cpu_name,
-    get_gpu_names,
     get_cpu_cores,
     get_cpu_frequency,
     get_cpu_usage,
@@ -37,6 +36,7 @@ from services.system_info import (
     get_top_processes,
     get_battery,
 )
+from services.gpu_info import get_gpu_names, get_gpu_detail
 
 system_bp = Blueprint("system", __name__)
 
@@ -166,38 +166,8 @@ def system_public_ip():
 
 @system_bp.route("/api/system/gpu-detail", methods=["GET"])
 def system_gpu_detail():
-    result = {
-        "gpu_usage": 0,
-        "vram_total": 0,
-        "vram_used": 0,
-        "vram_percent": 0,
-        "temp": 0,
-        "driver_version": "",
-    }
-    try:
-        out = subprocess.run(
-            ["nvidia-smi", "--query-gpu=utilization.gpu,memory.total,memory.used,temperature.gpu,driver_version",
-             "--format=csv,noheader,nounits"],
-            capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=5, creationflags=CREATE_NO_WINDOW
-        ).stdout.strip()
-        if out:
-            parts = [p.strip() for p in out.split(",")]
-            if len(parts) >= 5:
-                gpu_usage_str = parts[0]
-                vram_total_str = parts[1]
-                vram_used_str = parts[2]
-                temp_str = parts[3]
-                driver_ver = parts[4]
-                result["gpu_usage"] = float(gpu_usage_str) if gpu_usage_str else 0
-                result["vram_total"] = float(vram_total_str) if vram_total_str else 0
-                result["vram_used"] = float(vram_used_str) if vram_used_str else 0
-                if result["vram_total"] > 0:
-                    result["vram_percent"] = round((result["vram_used"] / result["vram_total"]) * 100, 1)
-                result["temp"] = float(temp_str) if temp_str else 0
-                result["driver_version"] = driver_ver
-    except Exception:
-        pass
-    return jsonify({"success": True, "data": result})
+    data = get_gpu_detail()
+    return jsonify({"success": True, "data": data})
 
 
 @system_bp.route("/api/system/battery", methods=["GET"])

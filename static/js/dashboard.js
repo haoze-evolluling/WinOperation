@@ -19,7 +19,7 @@ function saveDashboardCache() {
     'dash-os', 'dash-hostname', 'dash-uptime', 'dash-boot-time',
     'dash-login-user', 'dash-arch', 'dash-ip', 'dash-public-ip',
     'dash-ram-text', 'dash-ram-pct', 'dash-disk-text', 'dash-disk-pct',
-    'dash-cpu', 'dash-gpu-vram', 'dash-gpu-temp', 'dash-gpu-driver',
+    'dash-cpu',
     'dash-battery-pct', 'dash-battery-status',
     'dash-temp-cpu', 'dash-temp-gpu',
     'load-ram-text', 'load-disk-text', 'load-swap-text', 'load-cpu-text',
@@ -41,7 +41,7 @@ function saveDashboardCache() {
     }
   }
 
-  ['dash-gpu', 'dash-disk-list', 'dash-proc-tbody'].forEach(id => {
+  ['dash-gpu-body', 'dash-disk-list', 'dash-proc-tbody'].forEach(id => {
     const el = document.getElementById(id);
     if (el && el.innerHTML && !el.innerHTML.includes('-')) {
       cache.htmls[id] = el.innerHTML;
@@ -157,26 +157,20 @@ export async function loadDashboard() {
     setText("dash-os", sysData.data.os);
     setText("dash-hostname", sysData.data.hostname);
     setText("dash-uptime", sysData.data.uptime);
-    setText("dash-boot-time", sysData.data.boot_time || "N/A");
-    setText("dash-login-user", sysData.data.login_user || "N/A");
-    setText("dash-arch", sysData.data.architecture || "N/A");
+    if (sysData.data.boot_time) setText("dash-boot-time", sysData.data.boot_time);
+    if (sysData.data.login_user) setText("dash-login-user", sysData.data.login_user);
+    if (sysData.data.architecture) setText("dash-arch", sysData.data.architecture);
   }
 
   if (netData && netData.success) {
     const conns = netData.data.connections;
     if (conns && conns.length > 0) {
       const c = conns[0];
-      setText("dash-ip", c.IPv4Address || "N/A");
-      setText("dash-adapter", c.InterfaceDescription || "N/A");
-      setText("dash-dns", c.DNSServer || "N/A");
+      if (c.IPv4Address) setText("dash-ip", c.IPv4Address);
+      if (c.InterfaceDescription) setText("dash-adapter", c.InterfaceDescription);
+      if (c.DNSServer) setText("dash-dns", c.DNSServer);
       const onlineEl = document.getElementById("dash-online");
       if (onlineEl) { onlineEl.textContent = "已联网"; onlineEl.style.color = "var(--success)"; }
-    } else {
-      setText("dash-ip", "N/A");
-      setText("dash-adapter", "N/A");
-      setText("dash-dns", "N/A");
-      const onlineEl = document.getElementById("dash-online");
-      if (onlineEl) { onlineEl.textContent = "未联网"; onlineEl.style.color = "var(--error)"; }
     }
   }
 }
@@ -184,7 +178,7 @@ export async function loadDashboard() {
 // 公网IP
 export async function loadDashboardPublicIP() {
   const data = await apiFetch("/api/system/public-ip", { silent: true });
-  if (data && data.success) setText("dash-public-ip", data.data.ip || "N/A");
+  if (data && data.success && data.data.ip) setText("dash-public-ip", data.data.ip);
 }
 
 // Wi-Fi 详情
@@ -211,8 +205,8 @@ export async function loadDashboardLatency() {
   const data = await apiFetch("/api/system/latency", { silent: true });
   if (data && data.success) {
     const d = data.data;
-    setText("dash-latency", d.latency_ms !== null && d.latency_ms !== undefined ? d.latency_ms + " ms" : "N/A");
-    setText("dash-packet-loss", d.loss_rate !== null && d.loss_rate !== undefined ? d.loss_rate + "%" : "N/A");
+    if (d.latency_ms != null) setText("dash-latency", d.latency_ms + " ms");
+    if (d.loss_rate != null) setText("dash-packet-loss", d.loss_rate + "%");
   }
 }
 
@@ -221,10 +215,8 @@ export async function loadDashboardGatewayDelay() {
   const data = await apiFetch("/api/system/gateway-delay", { silent: true });
   if (data && data.success) {
     const d = data.data;
-    if (d.delay_ms !== null && d.delay_ms !== undefined) {
+    if (d.delay_ms != null) {
       setText("dash-gateway-delay", d.gateway + " → " + d.delay_ms + " ms");
-    } else {
-      setText("dash-gateway-delay", d.error || "N/A");
     }
   }
 }
@@ -234,22 +226,19 @@ export async function loadDashboardHardware(signal) {
   const data = await apiFetch("/api/system/hardware", { signal, silent: true });
   if (!data || !data.success) return;
 
-  setText("dash-cpu", data.data.cpu || "N/A");
+  if (data.data.cpu) setText("dash-cpu", data.data.cpu);
 
   const gpuContainer = document.getElementById("dash-gpu");
   if (gpuContainer) {
     const gpus = data.data.gpus || [];
-    if (gpus.length === 0) {
-      gpuContainer.innerHTML = '<span class="dash-val-sm">N/A</span>';
-    } else {
-      gpuContainer.textContent = "";
-      gpus.forEach(g => {
-        const div = document.createElement("div");
-        div.className = "dash-val-sm";
-        div.textContent = g.name || "N/A";
-        gpuContainer.appendChild(div);
-      });
-    }
+    gpuContainer.textContent = "";
+    gpus.forEach(g => {
+      if (!g.name) return;
+      const div = document.createElement("div");
+      div.className = "dash-val-sm";
+      div.textContent = g.name;
+      gpuContainer.appendChild(div);
+    });
   }
 }
 
@@ -292,24 +281,25 @@ export async function loadDashboardResources(signal) {
   if (!resourcesChanged(r)) return;
   prevResources = r;
 
-  setText("dash-ram-text", r.ram_total + " GB (可用 " + r.ram_available + " GB)");
-  setText("dash-ram-pct", r.ram_percent);
-  setBar("dash-ram-bar", r.ram_percent);
+  if (r.ram_total > 0) {
+    setText("dash-ram-text", r.ram_total + " GB (可用 " + r.ram_available + " GB)");
+    setText("dash-ram-pct", r.ram_percent);
+    setBar("dash-ram-bar", r.ram_percent);
+  }
   setBar("load-ram-bar", r.ram_percent);
   setText("load-ram-text", r.ram_percent + "%");
 
-  setText("dash-disk-text", r.disk_total + " GB (可用 " + r.disk_free + " GB)");
-  setText("dash-disk-pct", r.disk_percent);
-  setBar("dash-disk-bar", r.disk_percent);
+  if (r.disk_total > 0) {
+    setText("dash-disk-text", r.disk_total + " GB (可用 " + r.disk_free + " GB)");
+    setText("dash-disk-pct", r.disk_percent);
+    setBar("dash-disk-bar", r.disk_percent);
+  }
   setBar("load-disk-bar", r.disk_percent);
   setText("load-disk-text", r.disk_percent + "%");
 
   if (r.swap_total > 0) {
     setText("load-swap-text", r.swap_percent + "%");
     setBar("load-swap-bar", r.swap_percent);
-  } else {
-    setText("load-swap-text", "不可用");
-    setBar("load-swap-bar", 0);
   }
 
   const diskList = document.getElementById("dash-disk-list");
@@ -371,27 +361,100 @@ function renderProcessTable(procs) {
   tbody.appendChild(fragment);
 }
 
-// GPU 详情
+// GPU 详情（多 GPU 支持 · 单列行布局 · 有数据才显示）
 export async function loadDashboardGpuDetail(signal) {
   const data = await apiFetch("/api/system/gpu-detail", { signal, silent: true });
-  if (data && data.success) {
-    const d = data.data;
-    setText("dash-gpu-vram", d.vram_total ? d.vram_used + " / " + d.vram_total + " MB (" + d.vram_percent + "%)" : "-");
-    setText("dash-gpu-temp", d.temp ? d.temp + "°C" : "-");
-    setText("dash-gpu-driver", d.driver_version || "-");
+  const body = document.getElementById("dash-gpu-body");
+  if (!body) return;
+  if (!data || !data.success) {
+    body.innerHTML = '<div class="gpu-empty">无法获取 GPU 数据</div>';
+    return;
   }
+
+  const gpus = data.data.gpus || [];
+  if (gpus.length === 0) {
+    body.textContent = "";
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+  gpus.forEach((g, idx) => {
+    const vendorClass = (g.vendor || "").toLowerCase();
+    const badgeLabel = g.dedicated ? g.vendor : (g.vendor + " 集成");
+
+    const card = document.createElement("div");
+    card.className = "gpu-card-item";
+
+    const cells = [];
+    // 利用率
+    if (g.load != null) {
+      const barClass = "bar-fill" + (g.load < 50 ? " low" : g.load < 80 ? " mid" : " high");
+      cells.push(`<div class="gpu-stat-cell">
+        <div class="gpu-stat-label">利用率</div>
+        <div class="gpu-stat-value">${g.load}%</div>
+        <div class="bar-track"><div class="${barClass}" style="width:${Math.min(100, g.load)}%"></div></div>
+      </div>`);
+    }
+    // 温度
+    if (g.temperature != null) {
+      cells.push(`<div class="gpu-stat-cell">
+        <div class="gpu-stat-label">温度</div>
+        <div class="gpu-stat-value">${g.temperature}°C</div>
+      </div>`);
+    }
+    // 总显存
+    if (g.vram_total != null && g.vram_total > 0) {
+      cells.push(`<div class="gpu-stat-cell">
+        <div class="gpu-stat-label">总显存</div>
+        <div class="gpu-stat-value">${g.vram_total} MB</div>
+      </div>`);
+    } else if (g.vram_total === null) {
+      cells.push(`<div class="gpu-stat-cell">
+        <div class="gpu-stat-label">显存</div>
+        <div class="gpu-stat-value">动态共享</div>
+      </div>`);
+    }
+    // 占用显存
+    if (g.vram_used != null && g.vram_total != null && g.vram_total > 0) {
+      const barClass = "bar-fill" + ((g.vram_percent || 0) < 50 ? " low" : (g.vram_percent || 0) < 80 ? " mid" : " high");
+      cells.push(`<div class="gpu-stat-cell">
+        <div class="gpu-stat-label">占用显存</div>
+        <div class="gpu-stat-value">${g.vram_used} MB (${g.vram_percent}%)</div>
+        <div class="bar-track"><div class="${barClass}" style="width:${Math.min(100, g.vram_percent || 0)}%"></div></div>
+      </div>`);
+    }
+    // 驱动版本
+    if (g.driver_version) {
+      cells.push(`<div class="gpu-stat-cell">
+        <div class="gpu-stat-label">驱动版本</div>
+        <div class="gpu-stat-value">${escapeHtml(g.driver_version)}</div>
+      </div>`);
+    }
+
+    card.innerHTML = `
+      <div class="gpu-card-header">
+        <span class="gpu-vendor-badge ${vendorClass}">${badgeLabel}</span>
+        <span class="gpu-card-title">${escapeHtml(g.name)}</span>
+      </div>
+      <div class="gpu-stat-grid">${cells.length ? cells.join('') : '<div class="gpu-stat-cell gpu-stat-cell--empty">暂无详细数据</div>'}</div>
+    `;
+    fragment.appendChild(card);
+  });
+
+  body.textContent = "";
+  body.appendChild(fragment);
 }
 
 // 电池
 export async function loadDashboardBattery() {
   const data = await apiFetch("/api/system/battery", { silent: true });
-  if (data && data.success) {
+  if (data && data.success && data.data.present) {
     const d = data.data;
-    if (d.present) {
-      setText("dash-battery-pct", d.percentage + "%");
-      setText("dash-battery-status", d.charging ? "充电中" : "未充电");
-      const statusEl = document.getElementById("dash-battery-status");
-      if (statusEl) statusEl.style.color = d.charging ? "var(--success)" : "var(--text-secondary)";
+    setText("dash-battery-pct", d.percentage + "%");
+    const statusEl = document.getElementById("dash-battery-status");
+    if (statusEl) {
+      statusEl.textContent = d.charging ? "充电中" : "未充电";
+      statusEl.style.color = d.charging ? "var(--success)" : "var(--text-secondary)";
     }
   }
 }

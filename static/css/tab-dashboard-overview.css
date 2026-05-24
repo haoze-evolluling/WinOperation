@@ -183,6 +183,76 @@
 .proc-bar-mini-fill.mid { background: var(--gradient-accent); }
 .proc-bar-mini-fill.high { background: var(--deep-red); }
 
+/* ---- GPU Sub-Cards (single-column row layout) ---- */
+.gpu-card-item {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  transition: border-color .25s ease;
+}
+.gpu-card-item:hover { border-color: var(--text-muted); }
+.gpu-card-item + .gpu-card-item { margin-top: 10px; }
+
+.gpu-card-header {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 8px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.gpu-vendor-badge {
+  display: inline-block;
+  font-size: .55rem; font-weight: 700;
+  padding: 1px 7px; border-radius: 3px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.gpu-vendor-badge.nvidia { background: #76b90022; color: #76b900; }
+.gpu-vendor-badge.amd    { background: #ed1c2422; color: #ed1c24; }
+.gpu-vendor-badge.intel  { background: #0071c522; color: #0071c5; }
+.gpu-vendor-badge.other  { background: var(--text-muted)22; color: var(--text-muted); }
+.gpu-card-title {
+  font-size: .82rem; font-weight: 600; color: var(--text);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+.gpu-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+}
+.gpu-stat-cell {
+  min-width: 0;
+}
+.gpu-stat-cell--empty {
+  grid-column: 1 / -1;
+  font-size: .78rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 4px 0;
+}
+.gpu-stat-label {
+  font-size: .62rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.gpu-stat-value {
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  margin-top: 1px;
+}
+.gpu-stat-cell .bar-track { margin-top: 4px; }
+
+.gpu-empty {
+  color: var(--text-muted); font-size: .82rem;
+  text-align: center; padding: 6px 0;
+}
+
 /* ---- State Colors ---- */
 .status-charging { color: var(--success); }
 .status-discharging { color: var(--text-secondary); }

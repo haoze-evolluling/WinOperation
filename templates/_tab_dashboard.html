@@ -160,20 +160,11 @@
           </div>
         </div>
 
-        <!-- Card 4: GPU Details -->
+        <!-- Card 4: GPU Details (dynamically rendered by JS) -->
         <div class="card" id="dash-gpu-detail-card">
           <div class="card-header"><span class="card-number">GPU</span><h3>GPU 详情</h3></div>
-          <div class="card-body">
-            <div class="dash-grid dash-col-2">
-              <div class="dash-stat">
-                <div class="stat-label">温度</div>
-                <div class="dash-val-sm" id="dash-gpu-temp">-</div>
-              </div>
-              <div class="dash-stat">
-                <div class="stat-label">驱动版本</div>
-                <div class="dash-val-sm" id="dash-gpu-driver">-</div>
-              </div>
-            </div>
+          <div class="card-body" id="dash-gpu-body">
+            <div class="dash-val-sm" style="color:var(--text-muted);">正在加载...</div>
           </div>
         </div>
 
