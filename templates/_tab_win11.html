@@ -1,0 +1,82 @@
+    <!-- ====== WIN11 TAB ====== -->
+    <div id="tab-win11" class="tab-content">
+      <div class="section-head">
+        <h2>Win11 优化专区</h2>
+      </div>
+
+      <!-- 右键菜单 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">Context Menu</span>
+          <h3>右键菜单样式</h3>
+        </div>
+        <div class="card-body">
+          <p style="margin-bottom:12px;color:var(--text-secondary);">
+            恢复 Windows 10 经典右键菜单（直接显示完整菜单，避免二级菜单延迟）。
+          </p>
+          <div class="toggle-group">
+            <span class="toggle-label">经典右键菜单</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="win11-classic-menu">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 任务栏对齐 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">Taskbar</span>
+          <h3>任务栏对齐方式</h3>
+        </div>
+        <div class="card-body">
+          <p style="margin-bottom:12px;color:var(--text-secondary);">
+            选择任务栏图标对齐方式：左对齐（Windows 10 风格）或居中对齐（Windows 11 默认）。
+          </p>
+          <div class="toggle-group">
+            <span class="toggle-label">左对齐</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="win11-taskbar-left">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 搜索建议 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">Search</span>
+          <h3>开始菜单搜索</h3>
+        </div>
+        <div class="card-body">
+          <p style="margin-bottom:12px;color:var(--text-secondary);">
+            禁用开始菜单的互联网搜索（Bing 搜索建议），仅搜索本地内容。
+          </p>
+          <div class="toggle-group">
+            <span class="toggle-label">禁用搜索建议</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="win11-disable-search">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 重启资源管理器 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">Explorer</span>
+          <h3>重启资源管理器</h3>
+        </div>
+        <div class="card-body">
+          <p style="margin-bottom:12px;color:var(--text-secondary);">
+            修改注册表后需要重启资源管理器才能生效。点击下方按钮立即重启。
+          </p>
+          <div>
+            <button id="win11-restart-explorer" class="btn btn-warning">重启资源管理器</button>
+          </div>
+        </div>
+      </div>
+    </div>
