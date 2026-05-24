@@ -1,0 +1,61 @@
+    <!-- ====== SYSTEM STATUS TAB ====== -->
+    <div id="tab-system-status" class="tab-content">
+      <div class="section-head">
+        <h2>系统状态</h2>
+      </div>
+
+      <div class="dash-cards">
+
+        <!-- Card 1: System Load -->
+        <div class="card">
+          <div class="card-header"><span class="card-number">Load</span><h3>系统负载 <span class="badge-live">实时</span></h3></div>
+          <div class="card-body">
+            <div class="load-row">
+              <div class="load-row-header">
+                <span class="load-row-label">CPU</span>
+                <span class="load-row-pct" id="load-cpu-text">0%</span>
+              </div>
+              <div class="bar-track load-bar"><div class="bar-fill" id="load-cpu-bar"></div></div>
+            </div>
+            <div class="load-row">
+              <div class="load-row-header">
+                <span class="load-row-label">内存</span>
+                <span class="load-row-pct" id="load-ram-text">0%</span>
+              </div>
+              <div class="bar-track load-bar"><div class="bar-fill" id="load-ram-bar"></div></div>
+            </div>
+            <div class="load-row">
+              <div class="load-row-header">
+                <span class="load-row-label">虚拟内存</span>
+                <span class="load-row-pct" id="load-swap-text">0%</span>
+              </div>
+              <div class="bar-track load-bar"><div class="bar-fill" id="load-swap-bar"></div></div>
+            </div>
+            <div class="load-row">
+              <div class="load-row-header">
+                <span class="load-row-label">存储</span>
+                <span class="load-row-pct" id="load-disk-text">0%</span>
+              </div>
+              <div class="bar-track load-bar"><div class="bar-fill" id="load-disk-bar"></div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Card 2: Process Monitor -->
+        <div class="card" id="dash-processes-card">
+          <div class="card-header"><span class="card-number">Process</span><h3>进程监控 <span class="badge-live">实时</span></h3></div>
+          <div class="card-body">
+            <div class="proc-table-wrap">
+              <table class="proc-table">
+                <thead>
+                  <tr><th>进程名</th><th>PID</th><th>CPU 占用</th><th>内存占用</th></tr>
+                </thead>
+                <tbody id="dash-proc-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
