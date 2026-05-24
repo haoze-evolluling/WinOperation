@@ -1,0 +1,37 @@
+    <!-- ====== UPDATE TAB ====== -->
+    <div id="tab-update" class="tab-content">
+      <div class="section-head">
+        <h2>延迟更新</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">Status</span>
+          <h3>更新状态</h3>
+        </div>
+        <div class="card-body">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+            <span>Windows 更新状态：</span>
+            <span class="status-tag" id="update-status">-</span>
+          </div>
+          <div id="update-info" class="text-muted" style="font-size:0.85rem;"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">Delay</span>
+          <h3>推迟更新</h3>
+        </div>
+        <div class="card-body">
+          <p style="margin-bottom:12px;color:var(--text-secondary);">
+            将 Windows 更新暂停到期时间设置为当前时间往后 10000 天，
+            同时禁用更新服务，从根本阻止系统自动更新。
+          </p>
+          <div class="btn-row">
+            <button id="update-delay" class="btn btn-warning">推迟 10000 天</button>
+            <button id="update-restore" class="btn btn-secondary">还原默认设置</button>
+          </div>
+        </div>
+      </div>
+    </div>
