@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WinMaster</title>
+  <title>WinOperation</title>
   <link rel="icon" href="/static/logo.ico">
   <script>
     (function() {
       var theme = null;
-      try { theme = localStorage.getItem('winmaster-theme'); } catch(e) {}
+      try { theme = localStorage.getItem('winoperation-theme'); } catch(e) {}
       if (theme !== 'dark' && theme !== 'light') {
         theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       }
