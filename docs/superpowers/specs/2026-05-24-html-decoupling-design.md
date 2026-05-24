@@ -2,7 +2,7 @@
 
 ## 现状
 
-WinMaster 是一个基于 Flask + Jinja2 的 Windows 系统管理工具，HTML 模板只有两个文件：
+WinOperation 是一个基于 Flask + Jinja2 的 Windows 系统管理工具，HTML 模板只有两个文件：
 
 | 文件 | 行数 | 问题 |
 |------|------|------|
