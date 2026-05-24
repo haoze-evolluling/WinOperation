@@ -60,7 +60,7 @@ export function bindEvent(id, event, fn) {
 
 export function pad(n) { return n < 10 ? "0" + n : "" + n; }
 
-const CACHE_STORE = 'winmaster-media';
+const CACHE_STORE = 'winoperation-media';
 
 export async function cacheMedia(key, url) {
   try {

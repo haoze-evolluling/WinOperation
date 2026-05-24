@@ -1,6 +1,6 @@
 import { apiFetch, setText, setBar, escapeHtml, bindEvent } from "./utils.js";
 
-const CACHE_KEY = 'winmaster_dashboard_data';
+const CACHE_KEY = 'winoperation_dashboard_data';
 
 function loadDashboardCache() {
   try {

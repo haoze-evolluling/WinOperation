@@ -1,10 +1,10 @@
 /**
- * WinMaster — Theme Manager
+ * WinOperation — Theme Manager
  * Handles dark/light mode with system preference detection
  * and localStorage persistence.
  */
 
-const STORAGE_KEY = 'winmaster-theme';
+const STORAGE_KEY = 'winoperation-theme';
 const THEME_DARK = 'dark';
 const THEME_LIGHT = 'light';
 
