@@ -1,20 +1,20 @@
 @echo off
 cd /d "%~dp0"
-title WinMaster
+title WinOperation
 
 REM -- Check if already running as admin
 fltmc >nul 2>&1
 if %errorlevel% equ 0 goto :admin
 
 REM -- Not admin: request elevation
-echo [WinMaster] Requesting administrator privileges...
+echo [WinOperation] Requesting administrator privileges...
 powershell -Command "Start-Process '%~f0' -Verb RunAs"
 exit /b
 
 :admin
 echo.
 echo   ========================================
-echo      WinMaster - Local System Manager
+echo      WinOperation - Local System Manager
 echo   ========================================
 echo.
 echo   Starting server at http://127.0.0.1:8080
@@ -29,5 +29,5 @@ if exist .exit_marker (
 )
 
 echo.
-echo [WinMaster] Server stopped.
+echo [WinOperation] Server stopped.
 pause

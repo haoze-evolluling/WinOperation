@@ -49,7 +49,7 @@ def initiate_shutdown(timeout_seconds: int):
     try:
         ok = _InitiateSystemShutdownEx(
             None,
-            "WinMaster 计划关机",
+            "WinOperation 计划关机",
             timeout_seconds,
             True,
             False,
@@ -79,7 +79,7 @@ def abort_shutdown():
         return (False, f"取消失败: {e}")
 
 
-TASK_FOLDER = "WinMaster"
+TASK_FOLDER = "WinOperation"
 
 
 def _get_scheduler():
@@ -91,7 +91,7 @@ def _get_scheduler():
 
 
 def _ensure_folder(root_folder):
-    """Get or create the WinMaster task folder."""
+    """Get or create the WinOperation task folder."""
     try:
         return root_folder.GetFolder(TASK_FOLDER)
     except Exception:
@@ -151,7 +151,7 @@ def create_scheduled_shutdown(days: list, time_str: str):
 
 
 def list_scheduled_shutdowns():
-    """Return list of task dicts from the WinMaster folder."""
+    """Return list of task dicts from the WinOperation folder."""
     try:
         scheduler = _get_scheduler()
         root_folder = scheduler.GetFolder("\\")
@@ -174,14 +174,14 @@ def list_scheduled_shutdowns():
 
 
 def delete_scheduled_shutdown(task_name: str):
-    """Delete a task from the WinMaster folder by name. Returns (success, message)."""
+    """Delete a task from the WinOperation folder by name. Returns (success, message)."""
     try:
         scheduler = _get_scheduler()
         root_folder = scheduler.GetFolder("\\")
         try:
             folder = root_folder.GetFolder(TASK_FOLDER)
         except Exception:
-            return (False, "未找到 WinMaster 文件夹")
+            return (False, "未找到 WinOperation 文件夹")
 
         folder.DeleteTask(task_name, 0)
         return (True, "计划已删除")

@@ -19,6 +19,6 @@ RESOURCE_DIR = _get_resource_dir()
 
 
 class Config:
-    SECRET_KEY = "winmaster-fixed-key"
+    SECRET_KEY = "winoperation-fixed-key"
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(BASE_DIR, "data", "app.db")
     SQLALCHEMY_TRACK_MODIFICATIONS = False

@@ -2,7 +2,7 @@ import os
 import subprocess
 import sys
 
-OUTPUT_NAME = "WinMaster"
+OUTPUT_NAME = "WinOperation"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DIST_DIR = os.path.join(BASE_DIR, "dist")
 ENTRY_POINT = os.path.join(BASE_DIR, "src", "main.py")
