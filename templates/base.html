@@ -18,35 +18,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=preview-singlecol-20260606">
 </head>
 <body>
   <div class="toast-container" id="toast-container"></div>
   {% block content %}{% endblock %}
-  <script>
-    (function() {
-      var hash = window.location.hash && window.location.hash.substring(1);
-      if (hash) {
-        var tab = document.getElementById(hash);
-        if (tab) {
-          document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
-          document.querySelectorAll('.topnav-item.active, .topnav-dropdown-item.active').forEach(function(el) { el.classList.remove('active'); });
-          tab.classList.add('active');
-          var nav = document.querySelector('.topnav-item[data-tab="' + hash + '"]');
-          if (nav) {
-            nav.classList.add('active');
-          } else {
-            var ddItem = document.querySelector('.topnav-dropdown-item[data-tab="' + hash + '"]');
-            if (ddItem) {
-              ddItem.classList.add('active');
-              var parent = ddItem.closest('.topnav-item');
-              if (parent) parent.classList.add('active');
-            }
-          }
-        }
-      }
-    })();
-  </script>
   <script type="module" src="/static/js/main.js"></script>
 </body>
 </html>

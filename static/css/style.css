@@ -6,7 +6,7 @@
 @import url("components-cards-info.css");
 @import url("components-toast.css");
 @import url("components-animations.css");
-@import url("tab-dashboard-overview.css");
+@import url("tab-dashboard-overview.css?v=preview-singlecol-20260606");
 @import url("tab-insights.css");
 @import url("tab-secondary-enhancements.css");
 @import url("tab-network-dns.css");
@@ -17,5 +17,5 @@
 @import url("tab-activation.css");
 @import url("tab-app-uninstall.css");
 @import url("tab-win11.css");
-@import url("responsive-breakpoints.css");
+@import url("responsive-breakpoints.css?v=preview-singlecol-20260606");
 @import url("dark-theme.css");

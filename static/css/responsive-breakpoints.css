@@ -78,13 +78,15 @@
   .version-btn { height: 36px; font-size: var(--text-sm); }
 
   .dash-cards { grid-template-columns: 1fr; }
+  .preview-grid > .preview-panel { grid-column: 1 / -1; }
   .dash-cards > .card { grid-column: 1 / -1; }
   .dash-col-3 { grid-template-columns: 1fr; }
   .dash-col-2 { grid-template-columns: 1fr; }
   .net-grid { grid-template-columns: 1fr; }
+  .gpu-stat-grid { grid-template-columns: 1fr; }
   .net-panel:first-child,
   .net-card:first-child { grid-row: auto; }
-  .dashboard-insights-card .insights-summary-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .preview-panel--insights-summary .insights-summary-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 480px) {
@@ -96,5 +98,5 @@
   .quick-item { font-size: var(--text-sm); padding: 0 10px; }
   .btn { padding: 0 14px; --btn-h: 36px; }
   .btn-sm { padding: 0 8px; --btn-sm-h: 30px; }
-  .dashboard-insights-card .insights-summary-metrics { grid-template-columns: 1fr; }
+  .preview-panel--insights-summary .insights-summary-metrics { grid-template-columns: 1fr; }
 }

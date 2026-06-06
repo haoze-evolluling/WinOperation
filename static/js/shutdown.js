@@ -22,7 +22,7 @@ export async function loadShutdown() {
   if (cancelBtn) cancelBtn.disabled = !s.active;
 }
 
-export async function loadSchedules() {
+async function loadSchedules() {
   const data = await apiFetch("/api/shutdown/schedules", { silent: true });
   if (!data || !data.success) return;
 
@@ -122,7 +122,7 @@ function bindShutdownPresets() {
   });
 }
 
-export function startShutdownCountdown(seconds) {
+function startShutdownCountdown(seconds) {
   stopShutdownCountdown();
   const display = document.getElementById("shutdown-timer-display");
   if (!display) return;

@@ -1,10 +1,11 @@
 import { apiFetch, showToast, bindEvent, escapeHtml } from "./utils.js";
 
 export async function loadUpdate() {
-  const [data] = await Promise.allSettled([
+  const [statusResult] = await Promise.allSettled([
     apiFetch("/api/update/status", { silent: true }),
     loadUpdateHealth(),
-  ]).then(results => [results[0].value]);
+  ]);
+  const data = statusResult.value;
   if (!data || !data.success) return;
 
   const u = data.data;
@@ -65,7 +66,7 @@ export function initUpdate() {
   });
 }
 
-export async function loadUpdateHealth() {
+async function loadUpdateHealth() {
   const data = await apiFetch("/api/update/health", { silent: true });
   if (!data || !data.success) return;
   const panel = document.getElementById("update-health-panel");

@@ -2,6 +2,7 @@ import ipaddress
 import socket
 import time
 from flask import Blueprint, request, jsonify
+from utils import resolve_addresses
 from services.network_mgmt import (
     get_network_status,
     toggle_wifi,
@@ -10,24 +11,6 @@ from services.network_mgmt import (
 )
 
 network_bp = Blueprint("network", __name__)
-
-
-def _resolve_target(target):
-    started = time.perf_counter()
-    infos = socket.getaddrinfo(target, None, type=socket.SOCK_STREAM)
-    elapsed_ms = round((time.perf_counter() - started) * 1000, 1)
-    addresses = []
-    seen = set()
-    for family, _, _, _, sockaddr in infos:
-        ip = sockaddr[0]
-        if ip in seen:
-            continue
-        seen.add(ip)
-        addresses.append({
-            "ip": ip,
-            "family": "IPv6" if family == socket.AF_INET6 else "IPv4",
-        })
-    return addresses, elapsed_ms
 
 
 def _tcp_check(target, port, timeout=1.2):
@@ -74,7 +57,7 @@ def network_diagnostics():
         clean_ports = [80, 443]
 
     try:
-        addresses, elapsed_ms = _resolve_target(target)
+        addresses, elapsed_ms = resolve_addresses(target)
         dns_error = ""
     except Exception as exc:
         addresses, elapsed_ms, dns_error = [], 0, str(exc)

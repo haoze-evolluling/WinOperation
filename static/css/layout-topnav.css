@@ -229,6 +229,10 @@
   margin: 0 auto;
 }
 
+.main-content:has(.preview-dashboard.active) {
+  max-width: 1840px;
+}
+
 .tab-content {
   display: none;
 }

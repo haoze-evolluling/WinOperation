@@ -1,11 +1,10 @@
 import locale
 import re
-import socket
 import subprocess
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from flask import Blueprint, request, jsonify
-from utils import CREATE_NO_WINDOW
+from utils import CREATE_NO_WINDOW, resolve_addresses
 
 speedtest_bp = Blueprint("speedtest", __name__)
 
@@ -239,8 +238,7 @@ def resolve_target():
 
     started = time.perf_counter()
     try:
-        infos = socket.getaddrinfo(target, None, type=socket.SOCK_STREAM)
-        elapsed_ms = round((time.perf_counter() - started) * 1000, 1)
+        addresses, elapsed_ms = resolve_addresses(target)
     except Exception as exc:
         elapsed_ms = round((time.perf_counter() - started) * 1000, 1)
         return jsonify({
@@ -252,18 +250,6 @@ def resolve_target():
                 "error": str(exc),
                 "status": "failed",
             },
-        })
-
-    addresses = []
-    seen = set()
-    for family, _, _, _, sockaddr in infos:
-        ip = sockaddr[0]
-        if ip in seen:
-            continue
-        seen.add(ip)
-        addresses.append({
-            "ip": ip,
-            "family": "IPv6" if family == socket.AF_INET6 else "IPv4",
         })
 
     return jsonify({

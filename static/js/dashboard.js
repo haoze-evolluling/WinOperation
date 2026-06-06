@@ -151,7 +151,7 @@ export const Dashboard = {
 };
 
 // 基础信息
-export async function loadDashboard() {
+async function loadDashboard() {
   const [sysData, netData] = await Promise.all([
     apiFetch("/api/system/info", { silent: true }),
     apiFetch("/api/network/status", { silent: true }),
@@ -180,13 +180,13 @@ export async function loadDashboard() {
 }
 
 // 公网IP
-export async function loadDashboardPublicIP() {
+async function loadDashboardPublicIP() {
   const data = await apiFetch("/api/system/public-ip", { silent: true });
   if (data && data.success && data.data.ip) setText("dash-public-ip", data.data.ip);
 }
 
 // Wi-Fi 详情
-export async function loadDashboardWifiDetail() {
+async function loadDashboardWifiDetail() {
   const data = await apiFetch("/api/system/wifi-detail", { silent: true });
   if (!data || !data.success) return;
 
@@ -205,7 +205,7 @@ export async function loadDashboardWifiDetail() {
 }
 
 // 外网延迟 & 丢包率
-export async function loadDashboardLatency() {
+async function loadDashboardLatency() {
   const data = await apiFetch("/api/system/latency", { silent: true });
   if (data && data.success) {
     const d = data.data;
@@ -215,7 +215,7 @@ export async function loadDashboardLatency() {
 }
 
 // 内网网关延迟
-export async function loadDashboardGatewayDelay() {
+async function loadDashboardGatewayDelay() {
   const data = await apiFetch("/api/system/gateway-delay", { silent: true });
   if (data && data.success) {
     const d = data.data;
@@ -226,7 +226,7 @@ export async function loadDashboardGatewayDelay() {
 }
 
 // 硬件信息
-export async function loadDashboardHardware(signal) {
+async function loadDashboardHardware(signal) {
   const data = await apiFetch("/api/system/hardware", { signal, silent: true });
   if (!data || !data.success) return;
 
@@ -282,7 +282,7 @@ function resourcesChanged(r) {
 }
 
 // 资源与进程
-export async function loadDashboardResources(signal) {
+async function loadDashboardResources(signal) {
   const data = await apiFetch("/api/system/resources", { signal, silent: true });
   if (!data || !data.success) return;
   const r = data.data;
@@ -341,7 +341,7 @@ export async function loadDashboardResources(signal) {
   renderResourceTrend(r);
 }
 
-export async function loadProcessSummary() {
+async function loadProcessSummary() {
   const data = await apiFetch("/api/system/process-summary", { silent: true });
   if (!data || !data.success) return;
   const d = data.data;
@@ -409,8 +409,8 @@ function renderProcessTable(procs) {
   tbody.appendChild(fragment);
 }
 
-// GPU 详情（多 GPU 支持 · 单列行布局 · 有数据才显示）
-export async function loadDashboardGpuDetail(signal) {
+// GPU 详情（多 GPU 支持 · 与硬件负载卡片一致的双列指标布局）
+async function loadDashboardGpuDetail(signal) {
   const data = await apiFetch("/api/system/gpu-detail", { signal, silent: true });
   const body = document.getElementById("dash-gpu-body");
   if (!body) return;
@@ -437,7 +437,7 @@ export async function loadDashboardGpuDetail(signal) {
     // 利用率
     if (g.load != null) {
       const barClass = "bar-fill" + (g.load < 50 ? " low" : g.load < 80 ? " mid" : " high");
-      cells.push(`<div class="gpu-stat-cell">
+      cells.push(`<div class="gpu-stat-cell gpu-stat-cell--meter">
         <div class="gpu-stat-label">利用率</div>
         <div class="gpu-stat-value">${g.load}%</div>
         <div class="bar-track"><div class="${barClass}" style="width:${Math.min(100, g.load)}%"></div></div>
@@ -465,7 +465,7 @@ export async function loadDashboardGpuDetail(signal) {
     // 占用显存
     if (g.vram_used != null && g.vram_total != null && g.vram_total > 0) {
       const barClass = "bar-fill" + ((g.vram_percent || 0) < 50 ? " low" : (g.vram_percent || 0) < 80 ? " mid" : " high");
-      cells.push(`<div class="gpu-stat-cell">
+      cells.push(`<div class="gpu-stat-cell gpu-stat-cell--meter">
         <div class="gpu-stat-label">占用显存</div>
         <div class="gpu-stat-value">${g.vram_used} MB (${g.vram_percent}%)</div>
         <div class="bar-track"><div class="${barClass}" style="width:${Math.min(100, g.vram_percent || 0)}%"></div></div>
@@ -494,7 +494,7 @@ export async function loadDashboardGpuDetail(signal) {
 }
 
 // 电池
-export async function loadDashboardBattery() {
+async function loadDashboardBattery() {
   const data = await apiFetch("/api/system/battery", { silent: true });
   if (data && data.success && data.data.present) {
     const d = data.data;
@@ -508,7 +508,7 @@ export async function loadDashboardBattery() {
 }
 
 // 温度
-export async function loadDashboardTemps() {
+async function loadDashboardTemps() {
   const data = await apiFetch("/api/system/temps", { silent: true });
   if (data && data.success) {
     const d = data.data;

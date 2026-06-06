@@ -60,7 +60,7 @@ function closeAllDropdowns() {
   document.querySelectorAll(".topnav-item.dropdown-open").forEach(el => el.classList.remove("dropdown-open"));
 }
 
-export function switchTab(tabId, pushState = true) {
+function switchTab(tabId, pushState = true) {
   if (tabId === "tab-insights") tabId = "tab-dashboard";
 
   document.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));

@@ -1,4 +1,4 @@
-import { apiFetch, showToast } from "./utils.js";
+import { apiFetch, showToast, escapeHtml } from "./utils.js";
 
 const KMS_SERVERS = [
   "kms.03k.org",
@@ -177,7 +177,6 @@ function showPane(step) {
     });
   }
 }
-
 function updateStepIndicator() {
   document.querySelectorAll(".wizard-step").forEach((el) => {
     const s = parseInt(el.dataset.step, 10);
@@ -244,7 +243,6 @@ async function startActivation() {
     btn.textContent = "开始激活";
   }
 }
-
 function renderTimeline(res, container) {
   const steps = res.steps || [];
 
@@ -294,10 +292,4 @@ function renderTimeline(res, container) {
       badgeEl.innerHTML = "";
     }
   }
-}
-
-function escapeHtml(text) {
-  const d = document.createElement("div");
-  d.textContent = text;
-  return d.innerHTML;
 }

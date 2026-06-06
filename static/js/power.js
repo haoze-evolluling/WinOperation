@@ -37,7 +37,7 @@ export async function loadPower() {
   loadBatteryInsights();
 }
 
-export async function loadBatteryInsights() {
+async function loadBatteryInsights() {
   const data = await apiFetch("/api/power/battery-insights", { silent: true });
   if (!data || !data.success) return;
   const d = data.data;

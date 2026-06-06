@@ -1,190 +1,180 @@
-    <div id="tab-dashboard" class="tab-content active dashboard-overview">
-      <div class="section-head dashboard-hero">
-        <div class="dashboard-hero-title">
-          <span class="dashboard-eyebrow">Overview</span>
-          <h2>仪表盘</h2>
+    <div id="tab-dashboard" class="tab-content active preview-dashboard">
+      <div class="section-head preview-toolbar">
+        <div class="preview-title">
+          <span class="preview-kicker">Realtime Overview</span>
+          <h2>系统概览</h2>
         </div>
-        <button id="dash-refresh-btn" class="dash-refresh-btn dashboard-hero-refresh" title="刷新数据" aria-label="刷新数据">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-        </button>
+        <div class="preview-toolbar-actions">
+          <span class="preview-sync-label">Live</span>
+          <button id="dash-refresh-btn" class="dash-refresh-btn preview-refresh-btn" title="刷新数据" aria-label="刷新数据">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          </button>
+        </div>
       </div>
 
-      <div class="dash-cards">
+      <div class="preview-grid" id="dashboard-preview-grid">
 
-        <!-- Card 1: System Info -->
-        <div class="card dashboard-card dash-card--system">
-          <div class="card-header"><span class="card-number">System</span><h3>系统信息</h3></div>
+        <div class="card preview-panel preview-panel--system">
+          <div class="card-header">
+            <span class="card-number">Host</span>
+            <h3>设备档案</h3>
+          </div>
           <div class="card-body">
-            <div class="dash-grid dash-col-3">
-              <div class="dash-stat">
-                <div class="stat-label">操作系统</div>
-                <div class="dash-val-sm" id="dash-os">-</div>
+            <div class="preview-field-grid preview-field-grid--2">
+              <div class="preview-field">
+                <span class="stat-label">操作系统</span>
+                <strong class="preview-field-value" id="dash-os">-</strong>
               </div>
-              <div class="dash-stat">
-                <div class="stat-label">计算机名</div>
-                <div class="dash-val-sm" id="dash-hostname">-</div>
+              <div class="preview-field">
+                <span class="stat-label">计算机名</span>
+                <strong class="preview-field-value" id="dash-hostname">-</strong>
               </div>
-              <div class="dash-stat">
-                <div class="stat-label">运行时长</div>
-                <div class="dash-val-sm" id="dash-uptime">-</div>
+              <div class="preview-field">
+                <span class="stat-label">运行时长</span>
+                <strong class="preview-field-value" id="dash-uptime">-</strong>
               </div>
-              <div class="dash-stat">
-                <div class="stat-label">启动时间</div>
-                <div class="dash-val-sm" id="dash-boot-time">-</div>
+              <div class="preview-field">
+                <span class="stat-label">启动时间</span>
+                <strong class="preview-field-value" id="dash-boot-time">-</strong>
               </div>
-              <div class="dash-stat">
-                <div class="stat-label">登录用户</div>
-                <div class="dash-val-sm" id="dash-login-user">-</div>
+              <div class="preview-field">
+                <span class="stat-label">登录用户</span>
+                <strong class="preview-field-value" id="dash-login-user">-</strong>
               </div>
-              <div class="dash-stat">
-                <div class="stat-label">系统架构</div>
-                <div class="dash-val-sm" id="dash-arch">-</div>
+              <div class="preview-field">
+                <span class="stat-label">系统架构</span>
+                <strong class="preview-field-value" id="dash-arch">-</strong>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 2: Hardware Info -->
-        <div class="card dashboard-card dash-card--hardware">
-          <div class="card-header"><span class="card-number">Hardware</span><h3>硬件信息</h3></div>
+        <div class="card preview-panel preview-panel--hardware">
+          <div class="card-header">
+            <span class="card-number">Compute</span>
+            <h3>硬件负载</h3>
+          </div>
           <div class="card-body">
             <div class="dash-grid dash-col-2">
-              <div class="dash-stat dash-stat--primary">
-                <div class="stat-label">处理器</div>
-                <div class="dash-val-sm" id="dash-cpu">-</div>
+              <div class="preview-field preview-field--primary">
+                <span class="stat-label">处理器</span>
+                <strong class="preview-field-value" id="dash-cpu">-</strong>
               </div>
-              <div class="dash-stat dash-stat--primary">
-                <div class="stat-label">显卡</div>
-                <div id="dash-gpu"></div>
+              <div class="preview-field preview-field--primary">
+                <span class="stat-label">显卡</span>
+                <div class="preview-field-value" id="dash-gpu"></div>
               </div>
             </div>
             <div class="dash-grid dash-col-2 dash-mt">
-              <div class="dash-stat dash-meter">
-                <div class="stat-label">内存</div>
-                <div class="dash-val-sm" id="dash-ram-text">-</div>
+              <div class="preview-meter">
+                <div class="preview-meter-head">
+                  <span class="stat-label">内存</span>
+                  <strong><span id="dash-ram-pct">0</span>%</strong>
+                </div>
+                <div class="preview-field-value" id="dash-ram-text">-</div>
                 <div class="bar-track"><div class="bar-fill" id="dash-ram-bar"></div></div>
-                <div class="bar-label"><span id="dash-ram-pct">0</span>% 已使用</div>
               </div>
-              <div class="dash-stat dash-meter">
-                <div class="stat-label">存储</div>
-                <div class="dash-val-sm" id="dash-disk-text">-</div>
+              <div class="preview-meter">
+                <div class="preview-meter-head">
+                  <span class="stat-label">存储</span>
+                  <strong><span id="dash-disk-pct">0</span>%</strong>
+                </div>
+                <div class="preview-field-value" id="dash-disk-text">-</div>
                 <div class="bar-track"><div class="bar-fill" id="dash-disk-bar"></div></div>
-                <div class="bar-label"><span id="dash-disk-pct">0</span>% 已使用</div>
                 <div id="dash-disk-list" class="dash-subs"></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 3: Network Info -->
-        <div class="card dashboard-card dash-card--network">
-          <div class="card-header"><span class="card-number">Network</span><h3>网络信息</h3></div>
+        <div class="card preview-panel preview-panel--network">
+          <div class="card-header">
+            <span class="card-number">Network</span>
+            <h3>网络链路</h3>
+          </div>
           <div class="card-body">
             <div class="net-grid">
-
-              <!-- 连接概况 -->
               <section class="net-panel">
                 <div class="net-panel-header">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                  连接概况
+                  连接
                 </div>
                 <div class="net-panel-body">
-                  <div class="net-row">
-                    <span class="net-label">内网 IP</span>
-                    <span class="net-value" id="dash-ip">-</span>
-                  </div>
-                  <div class="net-row">
-                    <span class="net-label">连接状态</span>
-                    <span class="net-value" id="dash-online">-</span>
-                  </div>
-                  <div class="net-row">
-                    <span class="net-label">公网 IP</span>
-                    <span class="net-value" id="dash-public-ip">-</span>
-                  </div>
-                  <div class="net-row">
-                    <span class="net-label">适配器</span>
-                    <span class="net-value" id="dash-adapter">-</span>
-                  </div>
-                  <div class="net-row">
-                    <span class="net-label">DNS 服务器</span>
-                    <span class="net-value" id="dash-dns">-</span>
-                  </div>
+                  <div class="net-row"><span class="net-label">状态</span><span class="net-value" id="dash-online">-</span></div>
+                  <div class="net-row"><span class="net-label">内网 IP</span><span class="net-value" id="dash-ip">-</span></div>
+                  <div class="net-row"><span class="net-label">公网 IP</span><span class="net-value" id="dash-public-ip">-</span></div>
+                  <div class="net-row"><span class="net-label">适配器</span><span class="net-value" id="dash-adapter">-</span></div>
+                  <div class="net-row"><span class="net-label">DNS</span><span class="net-value" id="dash-dns">-</span></div>
                 </div>
               </section>
 
-              <!-- Wi-Fi（仅无线连接时显示） -->
               <section class="net-panel" id="net-wifi-section" style="display:none;">
                 <div class="net-panel-header">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
                   Wi-Fi
                 </div>
                 <div class="net-panel-body">
-                  <div class="net-row">
-                    <span class="net-label">SSID</span>
-                    <span class="net-value" id="dash-ssid">-</span>
-                  </div>
-                  <div class="net-row">
-                    <span class="net-label">信号</span>
-                    <span class="net-value" id="dash-signal-text">-</span>
-                  </div>
+                  <div class="net-row"><span class="net-label">SSID</span><span class="net-value" id="dash-ssid">-</span></div>
+                  <div class="net-row"><span class="net-label">信号</span><span class="net-value" id="dash-signal-text">-</span></div>
                 </div>
               </section>
 
-              <!-- 延迟 -->
               <section class="net-panel">
                 <div class="net-panel-header">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  网络延迟
+                  延迟
                 </div>
                 <div class="net-panel-body">
-                  <div class="net-row">
-                    <span class="net-label">内网</span>
-                    <span class="net-value" id="dash-gateway-delay">-</span>
-                  </div>
-                  <div class="net-row">
-                    <span class="net-label">外网</span>
-                    <span class="net-value" id="dash-latency">-</span>
-                  </div>
-                  <div class="net-row">
-                    <span class="net-label">丢包</span>
-                    <span class="net-value" id="dash-packet-loss">-</span>
-                  </div>
+                  <div class="net-row"><span class="net-label">内网</span><span class="net-value" id="dash-gateway-delay">-</span></div>
+                  <div class="net-row"><span class="net-label">外网</span><span class="net-value" id="dash-latency">-</span></div>
+                  <div class="net-row"><span class="net-label">丢包</span><span class="net-value" id="dash-packet-loss">-</span></div>
                 </div>
               </section>
-
             </div>
           </div>
         </div>
 
-        <!-- Card 4: Battery Info -->
-        <div class="card dashboard-card dash-card--battery" id="dash-battery-card">
-          <div class="card-header"><span class="card-number">Battery</span><h3>电池信息</h3></div>
+        <div class="card preview-panel preview-panel--battery" id="dash-battery-card">
+          <div class="card-header">
+            <span class="card-number">Power</span>
+            <h3>电源与温度</h3>
+          </div>
           <div class="card-body">
-            <div class="dash-grid dash-col-2">
-              <div class="dash-stat">
-                <div class="stat-label">剩余电量</div>
-                <div class="dash-val-sm" id="dash-battery-pct">-</div>
+            <div class="preview-field-grid preview-field-grid--2">
+              <div class="preview-field">
+                <span class="stat-label">剩余电量</span>
+                <strong class="preview-field-value" id="dash-battery-pct">-</strong>
               </div>
-              <div class="dash-stat">
-                <div class="stat-label">充电状态</div>
-                <div class="dash-val-sm" id="dash-battery-status">-</div>
+              <div class="preview-field">
+                <span class="stat-label">充电状态</span>
+                <strong class="preview-field-value" id="dash-battery-status">-</strong>
+              </div>
+              <div class="preview-field">
+                <span class="stat-label">CPU 温度</span>
+                <strong class="temp-value" id="dash-temp-cpu">-</strong>
+              </div>
+              <div class="preview-field">
+                <span class="stat-label">GPU 温度</span>
+                <strong class="temp-value" id="dash-temp-gpu">-</strong>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 5: GPU Details (dynamically rendered by JS) -->
-        <div class="card dashboard-card dash-card--gpu" id="dash-gpu-detail-card">
-          <div class="card-header"><span class="card-number">GPU</span><h3>GPU 详情</h3></div>
+        <div class="card preview-panel preview-panel--gpu" id="dash-gpu-detail-card">
+          <div class="card-header">
+            <span class="card-number">GPU</span>
+            <h3>图形设备</h3>
+          </div>
           <div class="card-body" id="dash-gpu-body">
             <div class="dash-val-sm dash-loading-muted">正在加载...</div>
           </div>
         </div>
 
-        <div class="card dashboard-card dashboard-insights-card dash-card--insights">
+        <div class="card preview-panel preview-panel--insights-summary">
           <div class="card-header">
             <span class="card-number">Inspect</span>
-            <h3>系统巡检 <span class="badge-live">Python</span></h3>
+            <h3>巡检概况 <span class="badge-live">Python</span></h3>
             <div class="card-actions">
               <button id="insights-export-btn" class="btn btn-sm btn-secondary">导出报告</button>
               <button id="insights-refresh-btn" class="dash-refresh-btn" title="刷新巡检" aria-label="刷新巡检">
@@ -193,7 +183,7 @@
             </div>
           </div>
           <div class="card-body">
-            <div class="insights-summary-grid dashboard-insights-summary">
+            <div class="insights-summary-grid">
               <div class="insights-score-panel" id="insights-score-panel">
                 <div class="insights-score-label">健康评分</div>
                 <div class="insights-score-value" id="insights-score">--</div>
@@ -218,12 +208,28 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
+        <div class="card preview-panel preview-panel--insights-recommendations">
+          <div class="card-header">
+            <span class="card-number">Advice</span>
+            <h3>巡检建议</h3>
+          </div>
+          <div class="card-body">
             <div class="insights-recommendations" id="insights-recommendations">
               <div class="empty-hint">正在生成巡检建议...</div>
             </div>
+          </div>
+        </div>
 
-            <div class="insights-toolbar dashboard-insights-toolbar">
+        <div class="card preview-panel preview-panel--insights-controls">
+          <div class="card-header">
+            <span class="card-number">Filter</span>
+            <h3>结果筛选</h3>
+          </div>
+          <div class="card-body">
+            <div class="insights-toolbar preview-insights-toolbar">
               <div class="insights-filter-group" id="insights-filter-group">
                 <button class="insights-filter active" data-filter="all">全部</button>
                 <button class="insights-filter" data-filter="critical">紧急</button>
@@ -233,12 +239,12 @@
               </div>
               <input id="insights-search" class="insights-search" type="search" placeholder="搜索巡检项、进程、网卡、DNS">
             </div>
+          </div>
+        </div>
 
-            <div id="insights-feature-grid" class="insights-feature-grid">
-              <div class="insights-loading-card">
-                <div class="empty-hint">正在载入 20 项智能巡检...</div>
-              </div>
-            </div>
+        <div id="insights-feature-grid" class="insights-feature-grid preview-insight-grid" aria-live="polite">
+          <div class="insights-loading-card preview-insight-loading">
+            <div class="empty-hint">正在载入 20 项智能巡检...</div>
           </div>
         </div>
 

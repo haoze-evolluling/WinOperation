@@ -202,8 +202,10 @@ function renderFeatures(snapshot) {
     return;
   }
 
-  grid.innerHTML = features.map(feature => `
-    <article class="insight-card ${escapeHtml(feature.severity || "info")}" data-feature-id="${escapeHtml(feature.id)}">
+  grid.innerHTML = features.map((feature, idx) => {
+    const featureId = feature.id || ("feature-" + idx);
+    return `
+    <article class="insight-card preview-insight-card ${escapeHtml(feature.severity || "info")}" data-feature-id="${escapeHtml(featureId)}">
       <div class="insight-card-head">
         <div>
           <span class="insight-status ${escapeHtml(feature.severity || "info")}">${severityText(feature.severity)}</span>
@@ -214,7 +216,8 @@ function renderFeatures(snapshot) {
       <p class="insight-detail">${escapeHtml(feature.detail || "")}</p>
       ${renderFeatureDetails(feature)}
     </article>
-  `).join("");
+  `;
+  }).join("");
 }
 
 function renderSnapshot(snapshot) {
