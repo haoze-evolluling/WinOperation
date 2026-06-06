@@ -1,0 +1,103 @@
+/* ============================================
+   WinOperation — Blue & White Theme
+   Deep-sea aurora color palette
+   ============================================ */
+
+:root {
+  /* ---- Core Palette ---- */
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --surface: #f8fafc;
+  --border: #a0b0c0;
+  --border-focus: var(--accent);
+  --text: #000000;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  /* ---- Brand Colors: Deep-Sea Aurora ---- */
+  --accent: #06b6d4;
+  --accent-hover: #0891b2;
+  --accent-light: #22d3ee;
+  --accent-ice: #7dd3fc;
+  --accent-subtle: #cffafe;
+
+  /* ---- Semantic Colors ---- */
+  --deep-red: #dc2626;
+  --deep-red-hover: #b91c1c;
+  --success: #16a34a;
+  --success-hover: #15803d;
+  --error: #dc2626;
+  --error-hover: #b91c1c;
+  --warning: #d97706;
+
+  /* ---- Button Colors ---- */
+  --btn-primary-bg: var(--accent);
+  --btn-primary-hover: var(--accent-hover);
+  --btn-primary-text: #ffffff;
+  --btn-success-bg: var(--success);
+  --btn-success-hover: var(--success-hover);
+  --badge-live-bg: rgba(6, 182, 212, 0.12);
+  --table-hover-bg: rgba(6, 182, 212, 0.04);
+
+  /* ---- Top Navigation ---- */
+  --nav-bg: #ffffff;
+  --nav-border: #a0b0c0;
+  --nav-text: #64748b;
+  --nav-hover-bg: #f1f5f9;
+  --nav-active: #06b6d4;
+  --nav-active-border: #06b6d4;
+
+  /* ---- Scrollbar ---- */
+  --scrollbar-thumb: #a0b0c0;
+  --scrollbar-thumb-hover: #94a3b8;
+
+  /* ---- Shadows (light) ---- */
+  --shadow-sm: 0 1px 3px rgba(15, 43, 74, 0.06);
+  --shadow: 0 4px 16px rgba(15, 43, 74, 0.08);
+  --shadow-lg: 0 12px 40px rgba(15, 43, 74, 0.1);
+  --shadow-xl: 0 24px 64px rgba(15, 43, 74, 0.12);
+  --shadow-glow: 0 0 20px rgba(6, 182, 212, 0.06), 0 0 40px rgba(6, 182, 212, 0.03);
+
+  /* ---- Surfaces ---- */
+  --track-bg: #a0b0c0;
+  --focus-ring: rgba(6, 182, 212, 0.2);
+  --hover-bg: #f1f5f9;
+
+  /* ---- Glass / Modal ---- */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-bg-hover: rgba(15, 43, 74, 0.04);
+  --glass-border: rgba(15, 43, 74, 0.08);
+  --modal-overlay: rgba(15, 43, 74, 0.3);
+  --modal-bg: #ffffff;
+  --modal-border: #a0b0c0;
+  --auth-card-bg: rgba(255, 255, 255, 0.9);
+
+  /* ---- Gradients ---- */
+  --gradient-accent: linear-gradient(135deg, #06b6d4, #67e8f9);
+  --gradient-accent-subtle: linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(125, 211, 252, 0.04));
+  --gradient-surface: linear-gradient(180deg, var(--card) 0%, var(--surface) 100%);
+  --gradient-divider: linear-gradient(90deg, #a0b0c0 0%, transparent 100%);
+
+  /* ---- Typography ---- */
+  --font-sans: 'DM Sans', 'Noto Sans SC', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  /* ---- Font Sizes ---- */
+  --text-xs:   .68rem;
+  --text-sm:   .75rem;
+  --text-base: .82rem;
+  --text-md:   .88rem;
+  --text-lg:   1rem;
+  --text-xl:   1.15rem;
+  --text-2xl:  1.6rem;
+  --text-3xl:  2rem;
+
+  /* ---- Spacing & Sizing ---- */
+  --radius: 8px;
+  --radius-lg: 12px;
+  --nav-h: 56px;
+  --touch: 48px;
+  --btn-border: #a0b0c0;
+  --gap-sm: 8px;
+  --gap-md: 10px;
+}

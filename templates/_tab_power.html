@@ -1,0 +1,52 @@
+    <!-- ====== POWER TAB ====== -->
+    <div id="tab-power" class="tab-content">
+      <div class="section-head">
+        <h2>电源选项</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">Battery</span>
+          <h3>续航与电源建议</h3>
+          <button id="battery-insights-refresh" class="btn btn-sm btn-secondary" style="margin-left:auto;">刷新</button>
+        </div>
+        <div class="card-body">
+          <div class="module-metric-grid">
+            <div class="module-metric"><span>状态</span><strong id="battery-insight-status">-</strong></div>
+            <div class="module-metric"><span>电量</span><strong id="battery-insight-percent">-</strong></div>
+            <div class="module-metric"><span>预计剩余</span><strong id="battery-insight-remaining">-</strong></div>
+          </div>
+          <div id="battery-insight-tips" class="module-tip-list"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">Scheme</span>
+          <h3>当前电源方案</h3>
+        </div>
+        <div class="card-body">
+          <p class="stat-large" id="power-scheme-current" style="font-size:1.2rem;margin-bottom:16px;">-</p>
+          <select id="power-scheme-select"></select>
+          <div class="form-footer">
+            <div class="form-actions">
+              <button id="power-apply" class="btn btn-primary">应用方案</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">Startup</span>
+          <h3>快速启动</h3>
+        </div>
+        <div class="card-body">
+          <div class="status-indicator" id="fast-startup-status"></div>
+          <div class="btn-row">
+            <button id="fast-startup-enable" class="btn btn-sm btn-success">启用快速启动</button>
+            <button id="fast-startup-disable" class="btn btn-sm btn-danger">禁用快速启动</button>
+          </div>
+        </div>
+      </div>
+    </div>

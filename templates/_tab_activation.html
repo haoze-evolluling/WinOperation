@@ -1,0 +1,72 @@
+    <div id="tab-activation" class="tab-content">
+      <div class="section-head">
+        <h2>系统激活</h2>
+      </div>
+
+      <!-- Step Indicator -->
+      <div class="wizard-steps">
+        <div class="wizard-step active" data-step="1">
+          <span class="wizard-step-num">1</span>
+          <span class="wizard-step-label">选择版本</span>
+        </div>
+        <div class="wizard-connector"></div>
+        <div class="wizard-step" data-step="2">
+          <span class="wizard-step-num">2</span>
+          <span class="wizard-step-label">选择 KMS</span>
+        </div>
+        <div class="wizard-connector"></div>
+        <div class="wizard-step" data-step="3">
+          <span class="wizard-step-num">3</span>
+          <span class="wizard-step-label">激活</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <!-- Step 1: Version Selection -->
+          <div class="wizard-pane active" id="wizard-step-1">
+            <div id="activation-versions"></div>
+          </div>
+
+          <!-- Step 2: KMS Selection -->
+          <div class="wizard-pane" id="wizard-step-2">
+            <div id="activation-kms-list" class="kms-grid"></div>
+            <div class="kms-divider"></div>
+            <div class="kms-custom-row">
+              <input type="text" id="activation-kms-custom" placeholder="输入自定义 KMS 服务器地址">
+              <button id="kms-use-custom" class="btn btn-sm btn-secondary">使用</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Activate & Results -->
+          <div class="wizard-pane" id="wizard-step-3">
+            <div class="activation-summary" id="activation-summary">
+              <div class="summary-item">
+                <span>版本</span>
+                <span class="summary-val" id="summary-version">未选择</span>
+              </div>
+              <span class="summary-arrow">→</span>
+              <div class="summary-item">
+                <span>KMS 服务器</span>
+                <span class="summary-val" id="summary-kms">未选择</span>
+              </div>
+            </div>
+
+            <div class="activation-trigger-row">
+              <button id="activation-start" class="btn btn-primary">开始激活</button>
+            </div>
+
+            <div id="activation-result-area" style="display:none;">
+              <div class="activation-timeline" id="activation-timeline"></div>
+              <div id="activation-complete-badge"></div>
+            </div>
+          </div>
+
+          <!-- Wizard Navigation -->
+          <div class="wizard-nav">
+            <button id="wizard-prev" class="btn btn-sm btn-secondary" style="display:none;">上一步</button>
+            <button id="wizard-next" class="btn btn-sm btn-primary">下一步</button>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,172 @@
+/* ============================================
+   WinOperation — Animations
+   GPU-accelerated, transform & opacity only.
+   ============================================ */
+
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.5, 0, 0.75, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 180ms;
+  --dur-normal: 280ms;
+  --dur-slow: 400ms;
+}
+
+/* ---- Tab Content Fade In ---- */
+.tab-content.active {
+  animation: tabEnter var(--dur-normal) var(--ease-out) both;
+}
+
+@keyframes tabEnter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Staggered Card Reveal ---- */
+.tab-content.active .card {
+  animation: cardReveal 0.5s var(--ease-out) both;
+}
+
+.tab-content.active .card:nth-child(1) { animation-delay: 0.02s; }
+.tab-content.active .card:nth-child(2) { animation-delay: 0.06s; }
+.tab-content.active .card:nth-child(3) { animation-delay: 0.10s; }
+.tab-content.active .card:nth-child(4) { animation-delay: 0.14s; }
+.tab-content.active .card:nth-child(5) { animation-delay: 0.18s; }
+.tab-content.active .card:nth-child(6) { animation-delay: 0.22s; }
+.tab-content.active .card:nth-child(7) { animation-delay: 0.26s; }
+.tab-content.active .card:nth-child(8) { animation-delay: 0.30s; }
+.tab-content.active .card:nth-child(9) { animation-delay: 0.34s; }
+.tab-content.active .card:nth-child(10) { animation-delay: 0.38s; }
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Section Heading Reveal ---- */
+.tab-content.active .section-head {
+  animation: headReveal 0.4s var(--ease-out) 0.01s both;
+}
+
+@keyframes headReveal {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Modal ---- */
+.modal-overlay.active {
+  animation: overlayFadeIn var(--dur-normal) var(--ease-out) both;
+}
+
+.modal-overlay.active .modal-box {
+  animation: modalScaleIn var(--dur-slow) var(--ease-spring) both;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modalScaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ---- Toast ---- */
+.toast-enter {
+  animation: toastSlideIn var(--dur-normal) var(--ease-out) both;
+}
+
+.toast-exit {
+  animation: toastFadeOut var(--dur-fast) var(--ease-in) both;
+}
+
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes toastFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; transform: translateX(16px); }
+}
+
+/* ---- Unified Spinner ---- */
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid var(--text-muted);
+  border-top-color: var(--accent-light);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.spinner-sm { width: 12px; height: 12px; border-width: 1.5px; }
+.spinner-lg { width: 24px; height: 24px; border-width: 3px; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Loading overlay pattern */
+.loading-spinner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: var(--text-base);
+}
+
+/* ---- Pulse Badge ---- */
+.badge-pulse {
+  animation: pulse 2.5s var(--ease-in-out) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ---- Refresh Spin ---- */
+.dash-refresh-btn.spinning svg {
+  animation: spin 0.7s linear infinite;
+}
+
+/* ---- Progress Indeterminate ---- */
+.progress-indeterminate .bar-fill {
+  width: 50% !important;
+  animation: progressSlide 1.4s var(--ease-in-out) infinite;
+}
+
+@keyframes progressSlide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+/* ---- Loading spinner for quick-item / app-uninstall items ---- */
+.quick-item.loading::after {
+  animation: spin 0.6s linear infinite;
+}
+
+/* ---- Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .tab-content.active,
+  .tab-content.active .card,
+  .tab-content.active .section-head,
+  .modal-overlay.active,
+  .modal-overlay.active .modal-box,
+  .toast-enter,
+  .toast-exit,
+  .badge-pulse,
+  .dash-refresh-btn.spinning svg,
+  .progress-indeterminate .bar-fill,
+  .quick-item.loading::after {
+    animation: none !important;
+  }
+}

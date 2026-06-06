@@ -1,0 +1,69 @@
+/* ============================================
+   WinOperation — Quick Settings Tab
+   ============================================ */
+
+#quick-grid { display: block; }
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-md);
+}
+
+.quick-item {
+  display: flex; align-items: center; gap: 10px;
+  height: var(--btn-h, 40px);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer; padding: 0 14px;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+  user-select: none; -webkit-tap-highlight-color: transparent;
+  font-size: var(--text-base); color: var(--text);
+}
+
+.quick-item:hover {
+  border-color: var(--text-muted);
+  background: var(--hover-bg);
+}
+
+.quick-item:active { transform: scale(0.97); }
+
+.quick-item .icon {
+  font-size: var(--text-xl); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  width: 1.5em; height: 1.5em;
+  opacity: .6;
+}
+
+.quick-item .label { line-height: 1.3; }
+
+.quick-category + .quick-category {
+  margin-top: 24px;
+}
+
+.quick-category-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Loading spinner for quick items */
+.quick-item.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.quick-item.loading::after {
+  content: "";
+  width: 14px; height: 14px;
+  border: 2px solid var(--text-muted);
+  border-top-color: var(--accent-light);
+  border-radius: 50%;
+  margin-left: auto;
+  flex-shrink: 0;
+}

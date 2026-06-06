@@ -1,0 +1,100 @@
+/* ============================================
+   WinOperation — Responsive Breakpoints
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .main-content { padding: 28px 32px 48px; }
+}
+
+@media (max-width: 1024px) {
+  .main-content { padding: 24px 24px 40px; }
+  .section-head h2 { font-size: var(--text-2xl); }
+  .topnav { padding: 0 16px; }
+  .topnav-item { padding: 0 10px; font-size: var(--text-sm); }
+}
+
+@media (max-width: 768px) {
+  .dashboard { flex-direction: column; }
+
+  .topnav {
+    padding: 0 12px;
+    gap: 4px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .topnav-brand { margin-right: 8px; }
+  .topnav-brand h2 { font-size: var(--text-md); }
+  .topnav-brand-icon { font-size: var(--text-lg); }
+
+  .topnav-list {
+    gap: 0;
+    flex: 1;
+  }
+
+  .topnav-item {
+    padding: 0 8px;
+    font-size: var(--text-sm);
+    gap: 4px;
+  }
+
+  .topnav-item .topnav-icon { display: none; }
+
+  .topnav-exit {
+    padding: 4px 8px;
+    font-size: var(--text-sm);
+  }
+
+  .topnav-item .dropdown-arrow {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin-left: 0;
+  }
+
+  .topnav-dropdown { min-width: 140px; }
+  .topnav-dropdown-item { padding: 10px 14px; font-size: var(--text-base); }
+
+  .main-content { padding: 20px 16px 40px; }
+
+  .section-head { margin-bottom: 20px; padding-bottom: 10px; }
+  .section-head h2 { font-size: var(--text-xl); }
+
+  .card { padding: 20px; }
+  .stat-large { font-size: var(--text-xl); }
+  .timer-display { font-size: 2.2rem; padding: 14px; }
+
+  .quick-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .quick-item { font-size: var(--text-base); padding: 0 12px; }
+
+  .btn { padding: 0 16px; font-size: var(--text-base); --btn-h: 38px; }
+  .btn-sm { padding: 0 10px; font-size: var(--text-sm); --btn-sm-h: 32px; }
+
+  .btn-row { gap: var(--gap-sm); }
+
+  .toast-container { top: 12px; right: 12px; left: 12px; }
+  .toast { max-width: 100%; }
+
+  .version-btn { height: 36px; font-size: var(--text-sm); }
+
+  .dash-cards { grid-template-columns: 1fr; }
+  .dash-cards > .card { grid-column: 1 / -1; }
+  .dash-col-3 { grid-template-columns: 1fr; }
+  .dash-col-2 { grid-template-columns: 1fr; }
+  .net-grid { grid-template-columns: 1fr; }
+  .net-panel:first-child,
+  .net-card:first-child { grid-row: auto; }
+  .dashboard-insights-card .insights-summary-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px) {
+  .main-content { padding: 14px 12px 32px; }
+  .card { padding: 16px; }
+  .section-head { margin-bottom: 16px; }
+  .section-head h2 { font-size: var(--text-lg); }
+  .quick-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .quick-item { font-size: var(--text-sm); padding: 0 10px; }
+  .btn { padding: 0 14px; --btn-h: 36px; }
+  .btn-sm { padding: 0 8px; --btn-sm-h: 30px; }
+  .dashboard-insights-card .insights-summary-metrics { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard">
+  {% include "_topnav.html" %}
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- ====== DASHBOARD TAB ====== -->
+    {% include "_tab_dashboard.html" %}
+
+    {% include "_tab_system_status.html" %}
+
+    <!-- ====== NETWORK TAB ====== -->
+    {% include "_tab_network.html" %}
+
+    {% include "_tab_power.html" %}
+
+    {% include "_tab_shutdown.html" %}
+
+    {% include "_tab_quick.html" %}
+
+    <!-- ====== SPEEDTEST TAB ====== -->
+    {% include "_tab_speedtest.html" %}
+
+    <!-- ====== ACTIVATION TAB ====== -->
+    {% include "_tab_activation.html" %}
+
+    {% include "_tab_app_uninstall.html" %}
+
+    {% include "_tab_update.html" %}
+
+    {% include "_tab_win11.html" %}
+
+  </div>
+</div>
+{% include "_modals.html" %}
+{% endblock %}

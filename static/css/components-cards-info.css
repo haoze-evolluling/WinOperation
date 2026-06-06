@@ -1,0 +1,252 @@
+/* ============================================
+   WinOperation — Cards, Stats & Form Layout
+   Refined with hover elevation and detail
+   ============================================ */
+
+/* ---- Base Card ---- */
+.card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+}
+
+.card:hover {
+  border-color: var(--text-muted);
+  box-shadow: var(--shadow-glow), var(--shadow);
+  transform: translateY(-1px);
+}
+
+/* ---- Card Header ---- */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.card-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 14px;
+  left: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: var(--accent-light);
+  opacity: 1;
+  width: 4px;
+  height: 20px;
+  border-radius: 2px;
+}
+
+.card-header h3 {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.card-header .card-number {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: var(--surface);
+  padding: 3px 10px;
+  border-radius: 3px;
+}
+
+/* ---- Card Body ---- */
+.card-body {
+  color: var(--text-secondary);
+  font-size: var(--text-md);
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* Children that need to fill the card width */
+.card-body > .info-grid,
+.card-body > .dns-input-group,
+.card-body > .shutdown-inputs,
+.card-body > .quick-grid,
+.card-body > .load-row,
+.card-body > .dns-presets,
+.card-body > .dns-protocol-toggle,
+.card-body > .dns-group,
+.card-body > .btn-row,
+.card-body > .toggle-group,
+.card-body > .activation-info,
+.card-body > .adapter-loading-bar,
+.card-body > .speedtest-toolbar,
+.card-body > .table-wrap,
+.card-body > .proc-table-wrap,
+.card-body > .activation-form,
+.card-body > .activation-versions,
+.card-body > .dash-grid,
+.card-body > .dash-cards,
+.card-body > .dash-subs,
+.card-body > .mode-radio,
+.card-body > .schedule-days,
+.card-body > .speedtest-tabs,
+.card-body > .result-card,
+.card-body > #custom-result,
+.card-body > #net-info,
+.card-body > #schedule-list,
+.card-body > select {
+  width: 100%;
+}
+
+/* Card body children that animate in on parent hover */
+.card-body > .btn-row,
+.card-body > .form-footer {
+  width: 100%;
+}
+
+/* ---- Info Grid ---- */
+.info-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 20px;
+  font-size: var(--text-md);
+}
+
+.info-grid .label {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.info-grid .value {
+  color: var(--text);
+  font-weight: 400;
+}
+
+/* ---- Form Layout Helpers ---- */
+
+/* Form field row */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-sm);
+  width: 100%;
+}
+.form-row > * {
+  flex: 1 1 160px;
+  min-width: 0;
+}
+.form-row > .btn {
+  flex: none;
+  align-self: flex-end;
+}
+
+/* Form actions row */
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-sm);
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 4px;
+}
+
+/* Form footer */
+.form-footer {
+  width: 100%;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin-top: 4px;
+}
+
+.card-body > .form-footer:last-child {
+  margin-bottom: -4px;
+}
+
+/* ---- Stat Display ---- */
+.stat-large {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.stat-label {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+/* ---- Status Indicator ---- */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-md);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.status-dot.green { background: var(--success); }
+.status-dot.red   { background: var(--deep-red); }
+.status-dot.blue  { background: var(--accent-light); }
+
+/* ---- Timer (Editorial Large) ---- */
+.timer-display {
+  font-size: 3.2rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 20px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .02em;
+  line-height: 1.1;
+  width: 100%;
+}
+
+/* Centered status indicator */
+.card-body .status-indicator.center,
+.text-center .status-indicator {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ---- Status Tag ---- */
+.status-tag {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* ---- Divider ---- */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin: 10px 0;
+}

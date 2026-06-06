@@ -1,0 +1,72 @@
+  <!-- Top Navigation -->
+  <nav class="topnav">
+    <div class="topnav-brand">
+      <span class="topnav-brand-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </span>
+      <h2>WinOperation</h2>
+    </div>
+    <ul class="topnav-list">
+      <!-- 概览 — direct item -->
+      <li class="topnav-item active" data-tab="tab-dashboard">
+        <span class="topnav-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></span>
+        概览
+      </li>
+
+      <!-- 系统 -->
+      <li class="topnav-item has-dropdown">
+        <span class="topnav-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+        系统
+        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <div class="topnav-dropdown">
+          <a class="topnav-dropdown-item" data-tab="tab-system-status">系统状态</a>
+          <a class="topnav-dropdown-item" data-tab="tab-update">延迟更新</a>
+          <a class="topnav-dropdown-item" data-tab="tab-activation">系统激活</a>
+          <a class="topnav-dropdown-item" data-tab="tab-win11">Win11 专区</a>
+        </div>
+      </li>
+
+      <!-- 网络 -->
+      <li class="topnav-item has-dropdown">
+        <span class="topnav-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg></span>
+        网络
+        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <div class="topnav-dropdown">
+          <a class="topnav-dropdown-item" data-tab="tab-network">网络设置</a>
+          <a class="topnav-dropdown-item" data-tab="tab-speedtest">网站测速</a>
+        </div>
+      </li>
+
+      <!-- 电源 -->
+      <li class="topnav-item has-dropdown">
+        <span class="topnav-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></span>
+        电源
+        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <div class="topnav-dropdown">
+          <a class="topnav-dropdown-item" data-tab="tab-power">电源选项</a>
+          <a class="topnav-dropdown-item" data-tab="tab-shutdown">定时关机</a>
+        </div>
+      </li>
+
+      <!-- 工具 -->
+      <li class="topnav-item has-dropdown">
+        <span class="topnav-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+        工具
+        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <div class="topnav-dropdown">
+          <a class="topnav-dropdown-item" data-tab="tab-quick">快捷设置</a>
+          <a class="topnav-dropdown-item" data-tab="tab-app-uninstall">应用卸载</a>
+        </div>
+      </li>
+    </ul>
+    <button class="topnav-theme-btn" id="theme-toggle-btn" title="切换主题">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path class="theme-icon-sun" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
+        <circle class="theme-icon-sun" cx="12" cy="12" r="4"/>
+        <path class="theme-icon-moon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+    <button id="exit-btn" class="topnav-exit">
+      <span>✕</span> 退出
+    </button>
+  </nav>
